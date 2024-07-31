@@ -1,0 +1,48 @@
+# @package _global_
+
+# to execute this experiment run:
+# python run.py experiment=example_full.yaml
+
+defaults:
+  - override /trainer: default.yaml # override trainer to null so it's not loaded from main config defaults...
+  - override /model: SADM_2D.yaml
+  - override /datamodule: Brats21_train.yaml
+datamodule:
+  cfg:
+    rescaleFactor: 2
+    imageDim: [192,192,100]
+    mode: t1 
+    aug_intensity: True
+
+
+
+model:
+  cfg: 
+    test_timesteps: 500
+    ssim_sigma: 1
+    dim_mults: [1,2,2]
+    unet_dim: 128
+    backbone: Spark_Encoder_2D
+    version: resnet50
+    cond_dim: 128
+    ssim: False
+    OpenaiUnet: True # use openai unet
+    spatial_transformer: False # use crossattention for conditional features
+    condition: True # use conditional features
+    noisetype: simplex
+    save_to_disc: False
+    noise_ensemble: True
+    lr: 0.00005
+    ddpm_ckpt: # path to ddpm weights
+    gen_ano: False
+num_folds: 5
+logger:
+  wandb:
+    project: SADM
+
+ckpt_path: best 
+noCV: False
+trainer:
+  max_epochs: 600
+name : cDDPM_SADM_BRATS
+seed: 3141
