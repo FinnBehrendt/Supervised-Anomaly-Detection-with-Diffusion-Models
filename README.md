@@ -10,13 +10,15 @@ We propose a framework combining reconstruction-based and self-supervised UAD me
 Besides the effective use of synthetic training data, this framework allows for weakly-supervised training with small annotated data sets, generalizing to unseen pathologies. Our results show that with our approach, utilizing annotated data sets during training can substantially improve the segmentation performance for in-domain data while maintaining the generalizability of reconstruction-based approaches to pathologies unseen during training.
 ## Data
 We use the IXI data set, the BraTS21, MSLUB, ATLAS_v2 and WMH data set for our experiments. 
-You can download/request the data sets here:
+You can download/request the original data sets here:
 
 * [IXI](https://brain-development.org/ixi-dataset/)
 * [BraTS21](http://braintumorsegmentation.org/)
 * [ATLAS v2](https://fcon_1000.projects.nitrc.org/indi/retro/atlas)
 
-After downloading and processing the directory structure of <DATA_DIR> should look like this: 
+If you’d like to use our preprocessed data, we’ve made preprocessed versions of the datasets available [here](https://1drv.ms/u/c/66229029a9e95461/EVb21X1kmXxCh_xfqMNmzH8B1Rqe_wWDHYzoQuiGj94k3Q?e=wjFP6h) (approx. 37G). 
+
+After downloading, the directory structure of <DATA_DIR> should look like this: 
 
     <DATA_DIR>
     ├── Train
